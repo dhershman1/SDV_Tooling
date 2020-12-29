@@ -1,0 +1,172 @@
+:root {
+  --font: rgba(0, 0, 0, 0.65);
+  --secondary-font: rgb(220, 124, 124);
+  --secondary-light: rgb(236, 155, 155);
+  --borders: rgb(232, 232, 232);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  color: var(--font);
+  margin: 0;
+  height: 100%;
+}
+
+h1, h2, h3 {
+  color: var(--secondary-font);
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+nav {
+  font-size: 18px;
+  grid-area: header;
+  width: 100%;
+}
+
+.navbar__container {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--borders);
+}
+
+.navbar__brand {
+  font-size: 24px;
+  color: var(--secondary-font);
+  margin-left: 0.7rem;
+  text-decoration: none;
+}
+
+.navbar__brand:hover {
+  transition: all 0.3s;
+  color: var(--font);
+}
+
+.navbar__nav {
+  margin: 0;
+  list-style: none;
+  display: inline;
+}
+
+.navbar__item {
+  display: inline-block;
+}
+
+.navbar__link {
+  color: var(--font);
+  text-decoration: none;
+  padding: 1.5rem;
+}
+
+.navbar__link:hover {
+  transition: all 0.3s;
+  color: var(--secondary-font);
+}
+
+.navbar__link--active {
+  color: var(--secondary-light);
+}
+
+main {
+  height: 100%;
+  width: 75%;
+  margin: auto;
+}
+
+footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.lib__name {
+  text-align: center;
+}
+
+.lib__link {
+  color: var(--secondary-font);
+  text-decoration: none;
+}
+
+.lib__link:hover {
+  transition: all 0.3s;
+  color: var(--font);
+}
+
+.lib__description {
+  width: 100%;
+  text-align: center;
+}
+
+.articles {
+  width: 60%;
+  display: grid;
+  grid-template-areas: 'header header' 'articles tags';
+  grid-template-columns: 80% 20%;
+  text-align: center;
+}
+
+.articles__head {
+  grid-area: header;
+}
+
+.articles__list {
+  grid-area: articles;
+}
+
+.articles__tags {
+  grid-area: tags;
+}
+
+.article__tags {
+  margin-bottom: 0.5rem;
+}
+
+.article__tag {
+  display: inline-block;
+  border: 1px solid var(--border);
+  background-color: var(--secondary-light);
+  padding-left: .75em;
+  padding-right: .75em;
+  border-radius: 1rem;
+  margin-left: 0.2rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.article__tag:first-child {
+  margin-left: 0;
+}
+
+.article__title {
+  margin-top: 0;
+}
+
+.article__body {
+  text-align: left;
+}
+
+.card {
+  margin: 0.5rem auto 0 auto;
+  padding: 0.5rem;
+  width: 50%;
+  border: 1px solid var(--borders);
+}
+
+.libs .card:first-child {
+  margin-top: 0;
+}
+
+.articles .card {
+  margin: 0;
+  width: 90%;
+}
