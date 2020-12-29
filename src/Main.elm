@@ -2,9 +2,9 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
-import Page.Articles as Articles
+import Page as Page
 import Page.Home as Home
-import Page.Libraries as Libraries
+import Page.Mods as Mods
 import Page.NotFound as NotFound
 import Url exposing (Url)
 
@@ -54,11 +54,8 @@ view model =
         "/home" ->
             Page.view Page.Home Home.view
 
-        "/libraries" ->
-            Page.view Page.Libraries Libraries.view
-
-        "/articles" ->
-            Page.view Page.Articles Articles.view
+        "/mods" ->
+            Page.view Page.Mods Mods.view
 
         _ ->
             Page.view Page.Other (NotFound.view model.url)
