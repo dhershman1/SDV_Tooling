@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
+import Http
 import Page as Page
 import Page.Home as Home
 import Page.Mods as Mods
@@ -12,16 +13,18 @@ import Url exposing (Url)
 type alias Model =
     { key : Nav.Key
     , url : Url
+    , response : String
     }
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( Model key url, Cmd.none )
+    ( Model key url "Loading", Cmd.none )
 
 
 type Msg
     = ChangedUrl Url
+    | GotMods (Result Http.Error String)
     | ClickedLink Browser.UrlRequest
 
 
@@ -39,6 +42,14 @@ update msg model =
         ChangedUrl url ->
             ( { model | url = url }, Cmd.none )
 
+        GotMods results ->
+            case results of
+                Ok _ ->
+                    ( { model | response = "MODS GOT" }, Cmd.none )
+
+                Err _ ->
+                    ( { model | response = "ERROR GETTING MODS" }, Cmd.none )
+
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
@@ -49,10 +60,10 @@ view : Model -> Browser.Document Msg
 view model =
     case model.url.path of
         "/" ->
-            Page.view Page.Home Home.view
+            Page.view Page.Home (Home.view model.response)
 
         "/home" ->
-            Page.view Page.Home Home.view
+            Page.view Page.Home (Home.view model.response)
 
         "/mods" ->
             Page.view Page.Mods Mods.view
